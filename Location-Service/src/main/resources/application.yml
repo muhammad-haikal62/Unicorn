@@ -3,8 +3,8 @@ spring:
     name: location-service
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=Unicorn;encrypt=true;trustServerCertificate=true
-    username: haikal
-    password: haikal2103
+    username: hasim
+    password: 123
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
