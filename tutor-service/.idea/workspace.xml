@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="352e294f-69e0-4d2a-8b77-61ab001ef631" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/dto/TutorGridDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/src/main/java/com/Student_Service/StudentServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/src/main/java/com/Student_Service/repository/CityRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Student-Service/src/test/java/com/Student_Service/StudentServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/TutorServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/repository/TutorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/repository/TutorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/restController/TutorRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/restController/TutorRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/implementation/TutorServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/implementation/TutorServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/service/TutorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/service/TutorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/unicorn/tutor_service/TutorServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +31,14 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="fb79962a-bdbc-4e1d-9c21-97510506b2fe" />
+        <option name="url" value="https://github.com/muhammad-haikal62/Unicorn.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectId" id="2lMnnbuIkq67VBLQuDGsmqlMJBA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -58,9 +46,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
