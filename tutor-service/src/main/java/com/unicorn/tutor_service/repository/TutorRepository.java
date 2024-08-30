@@ -14,4 +14,12 @@ public interface TutorRepository extends JpaRepository<Tutor, String> {
             FROM Tutor AS tut
             """)
     List<Tutor> getALlTutor();
+
+    @Query("""
+            SELECT tut
+            FROM Tutor AS tut
+            WHERE
+                CONCAT(tut.firstName, ' ', tut.middleName, ' ', TRIM(tut.lastName)) = :name
+            """)
+    Tutor getTutorByName(String name);
 }
