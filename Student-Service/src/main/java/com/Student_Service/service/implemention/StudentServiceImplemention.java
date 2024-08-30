@@ -20,8 +20,6 @@ public class StudentServiceImplemention implements StudentService {
         this.repository = repository;
     }
 
-
-
     @Override
     public List<StudentDto> getAllStudentPage(Integer page) {
         Pageable pageable = PageRequest.of(page-1, 5, Sort.by("id"));
@@ -50,12 +48,52 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public boolean editStudent(Integer studentNumber) {
+    public StudentDto getStudentByStudentNumber(String studentNumber) {
+        Student stu = repository.getStudentByNumber(studentNumber);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+    @Override
+    public Integer totalPage(){
+        int total = repository.getTotal();
+        int hasil = 0;
+        if(total %5==0 ){
+            hasil = total/5;
+        }else {
+            int sisa = total%5;
+            hasil = (total-sisa)/5;
+            hasil = hasil + 1;
+        }
+        hasil = hasil == 0 ? hasil : 1;
+        return hasil;
+    }
+
+
+    @Override
+    public boolean editStudent(String studentNumber) {
         return false;
     }
 
     @Override
-    public boolean deleteStudent(Integer studentNumber) {
-        return false;
+    public boolean deleteStudent(String studentNumber) {
+        var student = repository.findById(studentNumber).orElseThrow();
+        repository.delete(student);
+        return true;
     }
 }

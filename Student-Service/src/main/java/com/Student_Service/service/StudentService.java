@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface StudentService {
     List<StudentDto> getAllStudentPage(Integer page);
-
-
-    boolean editStudent(Integer studentNumber);
-    boolean deleteStudent(Integer studentNumber);
+    Integer totalPage();
+    boolean editStudent(String studentNumber);
+    boolean deleteStudent(String studentNumber);
+    StudentDto getStudentByStudentNumber(String studentNumber);
 }
