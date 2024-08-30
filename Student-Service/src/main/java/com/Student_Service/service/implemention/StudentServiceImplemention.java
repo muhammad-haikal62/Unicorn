@@ -50,6 +50,29 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
+    public StudentDto getStudentByStudentNumber(String studentNumber) {
+        Student stu = repository.getStudentByNumber(studentNumber);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+
+    @Override
     public boolean editStudent(Integer studentNumber) {
         return false;
     }
