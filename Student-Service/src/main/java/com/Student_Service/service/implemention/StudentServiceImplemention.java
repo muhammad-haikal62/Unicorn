@@ -4,6 +4,7 @@ import com.Student_Service.dto.StudentDto;
 import com.Student_Service.entity.Student;
 import com.Student_Service.repository.StudentRepository;
 import com.Student_Service.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,9 +15,12 @@ import java.util.List;
 public class StudentServiceImplemention implements StudentService {
     private final StudentRepository repository;
 
+    @Autowired
     public StudentServiceImplemention(StudentRepository repository) {
         this.repository = repository;
     }
+
+
 
     @Override
     public List<StudentDto> getAllStudentPage(Integer page) {
@@ -32,5 +36,15 @@ public class StudentServiceImplemention implements StudentService {
             gridStudents.add(studentDto);
         }
         return gridStudents;
+    }
+
+    @Override
+    public boolean editStudent(Integer studentNumber) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteStudent(Integer studentNumber) {
+        return false;
     }
 }
