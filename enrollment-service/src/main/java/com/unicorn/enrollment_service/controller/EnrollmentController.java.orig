@@ -1,0 +1,55 @@
+package com.unicorn.enrollment_service.controller;
+
+import com.unicorn.enrollment_service.dto.InsertEnrollmentDto;
+import com.unicorn.enrollment_service.service.EnrollmentService;
+import jakarta.validation.Valid;
+import lombok.Getter;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("enrollment")
+public class EnrollmentController {
+    private final EnrollmentService service;
+
+    public EnrollmentController(EnrollmentService service) {
+        this.service = service;
+    }
+
+    @PostMapping("insert")
+    public ResponseEntity<Object> addEnrollment(
+            @Valid @RequestBody InsertEnrollmentDto dto,
+            BindingResult bindingResult
+    ){
+        try {
+            if (bindingResult.hasErrors()){
+                return ResponseEntity.unprocessableEntity().body(bindingResult.getAllErrors());
+            }
+            return ResponseEntity.ok().body(service.insertEnrollment(dto));
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+<<<<<<< HEAD
+    @GetMapping("period")
+    public ResponseEntity<Object> getPeriod(
+            @RequestParam Integer id
+    ){
+        try {
+            var detail = service.getPeriodByEnrollment(id);
+            return ResponseEntity.ok(detail);
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().body(exception.getMessage());
+=======
+    @GetMapping("page")
+    public ResponseEntity<Object> getEnrollment(@RequestParam(defaultValue = "1") Integer page) {
+        try {
+            return ResponseEntity.ok(service.getEnrollmentByPagination(page));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error");
+>>>>>>> 9b4f64e8eb500151f2004e707980d3c18959ccc4
+        }
+    }
+}
