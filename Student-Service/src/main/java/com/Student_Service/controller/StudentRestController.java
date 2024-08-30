@@ -46,4 +46,14 @@ public class StudentRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
         }
     }
+
+    @GetMapping(value = {"/getCertificateByStudentNumber={studentNumber}"})
+    public ResponseEntity<Object> getCertificateByStudentNumber(@PathVariable String studentNumber){
+        try {
+            var dto = service.getCertificate(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
 }
