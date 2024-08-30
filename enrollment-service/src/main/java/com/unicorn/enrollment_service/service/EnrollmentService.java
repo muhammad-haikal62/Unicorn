@@ -10,4 +10,5 @@ public interface EnrollmentService {
     String insertEnrollment(InsertEnrollmentDto dto);
     List<EnrollmentDto> getEnrollmentByPagination(Integer page);
     PeriodByEnrollmentDto getPeriodByEnrollment(Integer id);
+    EnrollmentDto getEnrollmentById(Integer id);
 }

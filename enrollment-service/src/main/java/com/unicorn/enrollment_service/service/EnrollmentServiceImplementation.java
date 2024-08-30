@@ -17,8 +17,8 @@ import java.util.List;
 @Service
 public class EnrollmentServiceImplementation implements EnrollmentService {
     private final EnrollmentRepository repository;
-    private final int rowInPage = 10;
     private final PeriodRepository periodRepository;
+    private final int rowInPage = 10;
 
     @Autowired
     public EnrollmentServiceImplementation(EnrollmentRepository repository, PeriodRepository periodRepository) {
@@ -52,6 +52,8 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
     public List<EnrollmentDto> getEnrollmentByPagination(Integer page) {
         Pageable pageable = PageRequest.of(page - 1, rowInPage);
         return repository.getByPage(pageable);
+    }
+
     public PeriodByEnrollmentDto getPeriodByEnrollment(Integer id) {
         Period period = periodRepository.getPeriodByEnrollment(id);
         PeriodByEnrollmentDto periodDto = new PeriodByEnrollmentDto();
@@ -60,5 +62,10 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
         periodDto.setStartDate(period.getStartDate());
         periodDto.setEndDate(period.getEndDate());
         return periodDto;
+    }
+
+    @Override
+    public EnrollmentDto getEnrollmentById(Integer id) {
+        return repository.getEnrollmentById(id);
     }
 }
