@@ -1,12 +1,8 @@
 package com.Student_Service.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -16,7 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "Student")
 public class Student {
-
     @Id
     @Column(name = "StudentNumber",length = 20)
     private String studentNumber;
