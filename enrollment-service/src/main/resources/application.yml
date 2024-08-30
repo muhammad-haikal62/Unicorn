@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: enrollment-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=Unicorn;encrypt=true;trustServerCertificate=true
+    username:
+    password:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+server:
+  port: 8086
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
