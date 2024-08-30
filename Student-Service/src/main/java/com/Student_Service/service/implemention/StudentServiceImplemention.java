@@ -92,6 +92,50 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
+    public StudentDto getStudentByFullName(String fullName) {
+        Student stu = repository.getStudentByFullName(fullName);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+    @Override
+    public StudentDto getStudentByCitizenshipID(Integer citizenshipId) {
+        Student stu = repository.getStudentByCitizenshipID(citizenshipId);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+    @Override
     public Integer totalPage(){
         int total = repository.getTotal();
         int hasil = 0;

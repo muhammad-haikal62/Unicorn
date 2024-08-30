@@ -14,4 +14,6 @@ public interface StudentService {
     boolean editStudent(String studentNumber);
     boolean deleteStudent(String studentNumber);
     StudentDto getStudentByStudentNumber(String studentNumber);
+    StudentDto getStudentByFullName(String fullName);
+    StudentDto getStudentByCitizenshipID(Integer citizenshipId);
 }

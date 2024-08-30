@@ -28,4 +28,18 @@ public interface StudentRepository extends JpaRepository<Student,String> {
             WHERE stu.studentNumber = :studentNumber
             """)
     Student getStudentByNumber(String studentNumber);
+
+    @Query(value = """
+            SELECT stu
+            FROM Student as stu
+            WHERE CONCAT(stu.firstName,' ',stu.middleName,' ',stu.lastName) LIKE %:fullName%
+            """)
+    Student getStudentByFullName(String fullName);
+
+    @Query(value = """
+            SELECT stu
+            FROM Student as stu
+            WHERE stu.citizenshipId = :citizenshipId
+            """)
+    Student getStudentByCitizenshipID(Integer citizenshipId);
 }
