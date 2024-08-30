@@ -3,12 +3,10 @@ package com.unicorn.enrollment_service.controller;
 import com.unicorn.enrollment_service.dto.InsertEnrollmentDto;
 import com.unicorn.enrollment_service.service.EnrollmentService;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("enrollment")
@@ -31,6 +29,18 @@ public class EnrollmentController {
             return ResponseEntity.ok().body(service.insertEnrollment(dto));
         } catch (Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("period")
+    public ResponseEntity<Object> getPeriod(
+            @RequestParam Integer id
+    ){
+        try {
+            var detail = service.getPeriodByEnrollment(id);
+            return ResponseEntity.ok(detail);
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().body(exception.getMessage());
         }
     }
 }
