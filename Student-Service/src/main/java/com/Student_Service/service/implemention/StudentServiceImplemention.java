@@ -3,9 +3,8 @@ package com.Student_Service.service.implemention;
 import com.Student_Service.dto.CertificateDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.dto.StudentMajorDto;
-import com.Student_Service.dto.StudentInsertDto;
+import com.Student_Service.dto.StudentUpsertDto;
 import com.Student_Service.entity.Student;
-import com.Student_Service.entity.StudentMajor;
 import com.Student_Service.repository.MajorRepository;
 import com.Student_Service.repository.StudentMajorRepository;
 import com.Student_Service.repository.CertificateRepository;
@@ -64,7 +63,7 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public void saveStudent(StudentInsertDto dto) {
+    public void saveStudent(StudentUpsertDto dto) {
         Student student = new Student();
         student.setStudentNumber(dto.getStudentNumber());
         student.setUsername(dto.getUsername());
@@ -165,17 +164,32 @@ public class StudentServiceImplemention implements StudentService {
         return hasil;
     }
 
-
     @Override
-    public boolean editStudent(String studentNumber) {
-        return false;
+    public void editStudent(StudentUpsertDto dto) {
+        var student = repository.findById(dto.getStudentNumber()).orElseThrow();
+        student.setStudentNumber(student.getStudentNumber());
+        student.setUsername(dto.getUsername());
+        student.setPassword(dto.getPassword());
+        student.setTitle(dto.getTitle());
+        student.setFirstName(dto.getFirstName());
+        student.setMiddleName(dto.getMiddleName().isEmpty() ? null:dto.getMiddleName());
+        student.setLastName(dto.getLastName().isEmpty() ? null:dto.getLastName());
+        student.setGender(dto.getGender());
+        student.setBirthDate(dto.getBirthDate());
+        student.setBirthCountryId(dto.getBirthCountryId());
+        student.setBirthCityId(dto.getBirthCityId());
+        student.setCitizenshipId(dto.getCitizenshipId());
+        student.setAddress(dto.getAddress());
+        student.setRegisterDate(dto.getRegisterDate());
+        student.setTotalCreditPoint(dto.getTotalCreditPoint());
+        repository.save(student);
     }
 
     @Override
-    public boolean deleteStudent(String studentNumber) {
+    public String deleteStudent(String studentNumber) {
         var student = repository.findById(studentNumber).orElseThrow();
         repository.delete(student);
-        return true;
+        return "Student Deleted!";
     }
 
     @Override

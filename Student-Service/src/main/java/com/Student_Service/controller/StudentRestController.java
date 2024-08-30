@@ -1,5 +1,6 @@
 package com.Student_Service.controller;
 
+import com.Student_Service.dto.StudentUpsertDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.dto.StudentInsertDto;
 import com.Student_Service.entity.Student;
@@ -65,7 +66,7 @@ public class StudentRestController {
     }
 
     @PostMapping("/saveStudent")
-    public ResponseEntity<Object> post(@RequestBody StudentInsertDto dto){
+    public ResponseEntity<Object> post(@RequestBody StudentUpsertDto dto){
         try{
             service.saveStudent(dto);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -79,6 +80,35 @@ public class StudentRestController {
         try {
             var dto = service.getCertificate(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @GetMapping(value = {"/getStudentMajor={studentNumber}"})
+    public ResponseEntity<Object> getStudentMajor(@PathVariable String studentNumber){
+        try {
+            var dto = service.getMajorByStudentNumber(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @PostMapping("/editStudent")
+    public ResponseEntity<Object> edit(@RequestBody StudentUpsertDto dto){
+        try{
+            service.editStudent(dto);
+            return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @GetMapping(value = {"/deleteStudent={studentNumber}"})
+    public ResponseEntity<Object> deleteStudent(@PathVariable String studentNumber){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
         }
