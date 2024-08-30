@@ -34,6 +34,7 @@ public class Enrollment {
     private BigDecimal fee;
     @Column(name = "Status", length = 3)
     private String status;
+
     @ManyToOne
     @JoinColumn(name = "PeriodID", insertable = false, updatable = false)
     private Period period;

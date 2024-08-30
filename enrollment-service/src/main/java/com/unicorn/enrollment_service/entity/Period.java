@@ -33,5 +33,9 @@ public class Period {
 
     @OneToMany(mappedBy = "period")
     private List<Enrollment> enrollments = new LinkedList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "CompetencyID", insertable = false, updatable = false)
+    private Competency competency;
 }
 

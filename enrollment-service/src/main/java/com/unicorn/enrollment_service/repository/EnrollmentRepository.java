@@ -39,4 +39,42 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer>
             FROM Enrollment enl
             WHERE enl.id = :id""")
     EnrollmentDto getEnrollmentById(Integer id);
+
+    @Query("""
+            SELECT new com.unicorn.enrollment_service.dto.EnrollmentDto(
+                enl.id,
+                enl.studentNumber,
+                enl.enrollDate,
+                enl.periodID,
+                enl.transactionDate,
+                enl.paymentMethod,
+                enl.fee,
+                enl.status
+            )
+            FROM Enrollment enl
+            JOIN enl.period per
+            JOIN per.competency com
+            JOIN com.subject sub
+            WHERE sub.Id = :subjectId
+            """)
+    List<EnrollmentDto> getBySubjectId(Integer subjectId);
+
+    @Query("""
+            SELECT new com.unicorn.enrollment_service.dto.EnrollmentDto(
+                enl.id,
+                enl.studentNumber,
+                enl.enrollDate,
+                enl.periodID,
+                enl.transactionDate,
+                enl.paymentMethod,
+                enl.fee,
+                enl.status
+            )
+            FROM Enrollment enl
+            JOIN enl.period per
+            JOIN per.competency com
+            JOIN com.subject sub
+            WHERE sub.majorId = :majorId
+            """)
+    List<EnrollmentDto> getByMajorId(Integer majorId);
 }

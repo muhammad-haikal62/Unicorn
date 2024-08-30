@@ -51,4 +51,37 @@ public class EnrollmentController {
             return ResponseEntity.internalServerError().body(exception.getMessage());
         }
     }
+
+    @GetMapping
+    public ResponseEntity<Object> getEnrollmentById(@RequestParam Integer id) {
+        try {
+            return ResponseEntity.ok(service.getEnrollmentById(id));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error");
+        }
+    }
+
+    @GetMapping("majorId")
+    public ResponseEntity<Object> getEnrollmentByMajorId(
+            @RequestParam(required = false)
+                    Integer majorId
+    ){
+        try {
+            return ResponseEntity.ok(service.getEnrollmentByMajorId(majorId));
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("subjectId")
+    public ResponseEntity<Object> getEnrollmentBySubjectId(
+            @RequestParam(required = false)
+                    Integer subjectId
+    ){
+        try {
+            return ResponseEntity.ok(service.getEnrollmentBySubjectId(subjectId));
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
 }

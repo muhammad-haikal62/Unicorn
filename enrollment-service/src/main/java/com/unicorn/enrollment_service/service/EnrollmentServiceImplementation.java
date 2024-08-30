@@ -54,6 +54,7 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
         return repository.getByPage(pageable);
     }
 
+    @Override
     public PeriodByEnrollmentDto getPeriodByEnrollment(Integer id) {
         Period period = periodRepository.getPeriodByEnrollment(id);
         PeriodByEnrollmentDto periodDto = new PeriodByEnrollmentDto();
@@ -67,5 +68,15 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
     @Override
     public EnrollmentDto getEnrollmentById(Integer id) {
         return repository.getEnrollmentById(id);
+    }
+
+    @Override
+    public List<EnrollmentDto> getEnrollmentBySubjectId(Integer subjectId) {
+        return repository.getBySubjectId(subjectId);
+    }
+
+    @Override
+    public List<EnrollmentDto> getEnrollmentByMajorId(Integer majorId) {
+        return repository.getByMajorId(majorId);
     }
 }

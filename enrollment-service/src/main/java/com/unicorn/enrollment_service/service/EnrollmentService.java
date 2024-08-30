@@ -11,4 +11,6 @@ public interface EnrollmentService {
     List<EnrollmentDto> getEnrollmentByPagination(Integer page);
     PeriodByEnrollmentDto getPeriodByEnrollment(Integer id);
     EnrollmentDto getEnrollmentById(Integer id);
+    List<EnrollmentDto> getEnrollmentBySubjectId(Integer subjectId);
+    List<EnrollmentDto> getEnrollmentByMajorId(Integer majorId);
 }
