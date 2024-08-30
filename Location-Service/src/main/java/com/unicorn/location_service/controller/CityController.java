@@ -1,7 +1,7 @@
 package com.unicorn.location_service.controller;
 
-import com.unicorn.location_service.dto.StateDto;
-import com.unicorn.location_service.service.abstraction.StateService;
+import com.unicorn.location_service.dto.CityDto;
+import com.unicorn.location_service.service.abstraction.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,27 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("state")
-public class StateController {
-    private StateService service;
+@RequestMapping("city")
+public class CityController {
+    private final CityService service;
 
     @Autowired
-    public StateController(StateService service) {
+    public CityController(CityService service){
         this.service = service;
     }
 
     @GetMapping("")
     public ResponseEntity<Object> get(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(required = false) Long countryId
+            @RequestParam(defaultValue = "1") int page
     ){
-        try {
-            List<StateDto> states = service.getStates(page, countryId);
-            return ResponseEntity.ok(states);
+        try{
+            List<CityDto> cities = service.getCities(page);
+            return ResponseEntity.ok(cities);
         }catch (Exception ex){
             return ResponseEntity.internalServerError().body(ex.getMessage());
         }
     }
-
-
 }

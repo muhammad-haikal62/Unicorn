@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StateRepository extends JpaRepository<State, Integer> {
+public interface StateRepository extends JpaRepository<State, Long> {
     @Query("""
             SELECT new com.unicorn.location_service.dto.StateDto(
                 st.id,
@@ -21,5 +21,5 @@ public interface StateRepository extends JpaRepository<State, Integer> {
             JOIN st.country AS c
             WHERE (:countryId IS NULL OR st.countryId = :countryId)
             """)
-    List<StateDto> getStates(Pageable pagination, Integer countryId);
+    List<StateDto> getStates(Pageable pagination, Long countryId);
 }

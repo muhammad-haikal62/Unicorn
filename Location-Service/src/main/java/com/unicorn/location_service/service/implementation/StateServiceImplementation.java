@@ -22,7 +22,7 @@ public class StateServiceImplementation implements StateService {
     }
 
     @Override
-    public List<StateDto> getStates(int page, Integer countryId){
+    public List<StateDto> getStates(int page, Long countryId){
         Pageable pagination = PageRequest.of(page - 1, rowInPage);
 
         return repository.getStates(pagination, countryId);

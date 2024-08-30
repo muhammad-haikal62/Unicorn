@@ -5,5 +5,5 @@ import com.unicorn.location_service.dto.StateDto;
 import java.util.List;
 
 public interface StateService {
-    List<StateDto> getStates(int page, Integer countryId);
+    List<StateDto> getStates(int page, Long countryId);
 }
