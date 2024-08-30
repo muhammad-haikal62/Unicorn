@@ -69,6 +69,21 @@ public class StudentServiceImplemention implements StudentService {
         return studentDto;
     }
 
+    @Override
+    public Integer totalPage(){
+        int total = repository.getTotal();
+        int hasil = 0;
+        if(total %5==0 ){
+            hasil = total/5;
+        }else {
+            int sisa = total%5;
+            hasil = (total-sisa)/5;
+            hasil = hasil + 1;
+        }
+        hasil = hasil == 0 ? hasil : 1;
+        return hasil;
+    }
+
 
     @Override
     public boolean editStudent(String studentNumber) {
