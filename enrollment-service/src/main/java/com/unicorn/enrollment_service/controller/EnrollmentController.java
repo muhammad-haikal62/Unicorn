@@ -32,6 +32,14 @@ public class EnrollmentController {
         }
     }
 
+    @GetMapping("page")
+    public ResponseEntity<Object> getEnrollment(@RequestParam(defaultValue = "1") Integer page) {
+        try {
+            return ResponseEntity.ok(service.getEnrollmentByPagination(page));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error");
+        }
+    }
     @GetMapping("period")
     public ResponseEntity<Object> getPeriod(
             @RequestParam Integer id

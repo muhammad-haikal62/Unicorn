@@ -1,5 +1,6 @@
 package com.unicorn.enrollment_service.service;
 
+import com.unicorn.enrollment_service.dto.EnrollmentDto;
 import com.unicorn.enrollment_service.dto.InsertEnrollmentDto;
 import com.unicorn.enrollment_service.dto.PeriodByEnrollmentDto;
 import com.unicorn.enrollment_service.entity.Enrollment;
@@ -7,6 +8,8 @@ import com.unicorn.enrollment_service.entity.Period;
 import com.unicorn.enrollment_service.repository.EnrollmentRepository;
 import com.unicorn.enrollment_service.repository.PeriodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 @Service
 public class EnrollmentServiceImplementation implements EnrollmentService {
     private final EnrollmentRepository repository;
+    private final int rowInPage = 10;
     private final PeriodRepository periodRepository;
 
     @Autowired
@@ -45,6 +49,9 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
     }
 
     @Override
+    public List<EnrollmentDto> getEnrollmentByPagination(Integer page) {
+        Pageable pageable = PageRequest.of(page - 1, rowInPage);
+        return repository.getByPage(pageable);
     public PeriodByEnrollmentDto getPeriodByEnrollment(Integer id) {
         Period period = periodRepository.getPeriodByEnrollment(id);
         PeriodByEnrollmentDto periodDto = new PeriodByEnrollmentDto();

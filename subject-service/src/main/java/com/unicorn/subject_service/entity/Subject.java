@@ -1,23 +1,27 @@
 package com.unicorn.subject_service.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name = "Subject")
-public class Subject{
+public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
+
+    @OneToMany(mappedBy = "subject")
+    private List<Prerequisite> subjectList;
+
+    @OneToMany(mappedBy = "prerequisite")
+    private List<Prerequisite> prerequisiteList;
 
     @Column(name = "Code", nullable = false)
     private String code;
@@ -41,5 +45,5 @@ public class Subject{
     private BigDecimal cost;
 
     @Column(name = "NonActiveDate")
-    private LocalDate nonActiveDate;
+    private LocalDateTime nonActiveDate;
 }

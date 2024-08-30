@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,5 +28,5 @@ public class SubjectSaveDto{
 
     private BigDecimal cost;
 
-    private LocalDate nonActiveDate;
+    private LocalDateTime nonActiveDate;
 }
