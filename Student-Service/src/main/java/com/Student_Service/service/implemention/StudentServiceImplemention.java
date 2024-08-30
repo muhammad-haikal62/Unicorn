@@ -1,6 +1,7 @@
 package com.Student_Service.service.implemention;
 
 import com.Student_Service.dto.StudentDto;
+import com.Student_Service.dto.StudentInsertDto;
 import com.Student_Service.entity.Student;
 import com.Student_Service.repository.StudentRepository;
 import com.Student_Service.service.StudentService;
@@ -50,7 +51,29 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
+    public void saveStudent(StudentInsertDto dto) {
+        Student student = new Student();
+        student.setStudentNumber(dto.getStudentNumber());
+        student.setUsername(dto.getUsername());
+        student.setPassword(dto.getPassword());
+        student.setTitle(dto.getTitle());
+        student.setFirstName(dto.getFirstName());
+        student.setMiddleName(dto.getMiddleName().isEmpty() ? null:dto.getMiddleName());
+        student.setLastName(dto.getLastName().isEmpty() ? null:dto.getLastName());
+        student.setGender(dto.getGender());
+        student.setBirthDate(dto.getBirthDate());
+        student.setBirthCountryId(dto.getBirthCountryId());
+        student.setBirthCityId(dto.getBirthCityId());
+        student.setCitizenshipId(dto.getCitizenshipId());
+        student.setAddress(dto.getAddress());
+        student.setRegisterDate(dto.getRegisterDate());
+        student.setTotalCreditPoint(dto.getTotalCreditPoint());
+        repository.save(student);
+    }
+
+    @Override
     public boolean editStudent(Integer studentNumber) {
+//        saya ganteng
         return false;
     }
 

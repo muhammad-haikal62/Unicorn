@@ -62,6 +62,4 @@ public class Student {
 
     @Column(name = "TotalCreditPoint",nullable = false)
     private Integer totalCreditPoint;
-
-
 }
