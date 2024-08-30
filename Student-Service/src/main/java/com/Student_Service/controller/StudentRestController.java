@@ -1,10 +1,15 @@
 package com.Student_Service.controller;
 
-import com.Student_Service.dto.StudentInsertDto;
+import com.Student_Service.dto.StudentUpsertDto;
+import com.Student_Service.dto.StudentDto;
 import com.Student_Service.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.PublicKey;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +21,27 @@ public class StudentRestController {
     public StudentRestController(StudentService service) {
         this.service = service;
     }
+
+    @GetMapping("/getStudentsPage")
+    public ResponseEntity<Object> getStudentsByPage(@RequestParam Integer page){
+        try{
+            List<StudentDto> students = service.getAllStudentPage(page);
+            return ResponseEntity.status(HttpStatus.OK).body(students);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+        }
+    }
+
+    @GetMapping("/getStudentByNumber")
+    public ResponseEntity<Object> getStudentBystudentNumber(@RequestParam String studentNumber){
+        try{
+            StudentDto student = service.getStudentByStudentNumber(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body(student);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+        }
+    }
+
 
     @GetMapping(value = {"/getStudentByFullName={fullName}"})
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
@@ -38,7 +64,7 @@ public class StudentRestController {
     }
 
     @PostMapping("/saveStudent")
-    public ResponseEntity<Object> post(@RequestBody StudentInsertDto dto){
+    public ResponseEntity<Object> post(@RequestBody StudentUpsertDto dto){
         try{
             service.saveStudent(dto);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -52,6 +78,35 @@ public class StudentRestController {
         try {
             var dto = service.getCertificate(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @GetMapping(value = {"/getStudentMajor={studentNumber}"})
+    public ResponseEntity<Object> getStudentMajor(@PathVariable String studentNumber){
+        try {
+            var dto = service.getMajorByStudentNumber(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @PostMapping("/editStudent")
+    public ResponseEntity<Object> edit(@RequestBody StudentUpsertDto dto){
+        try{
+            service.editStudent(dto);
+            return ResponseEntity.status(HttpStatus.OK).body(dto);
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+        }
+    }
+
+    @GetMapping(value = {"/deleteStudent={studentNumber}"})
+    public ResponseEntity<Object> deleteStudent(@PathVariable String studentNumber){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
         }

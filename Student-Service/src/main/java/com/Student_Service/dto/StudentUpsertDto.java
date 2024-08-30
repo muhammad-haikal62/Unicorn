@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class StudentInsertDto {
+public class StudentUpsertDto {
     private String studentNumber;
 
     private String username;
