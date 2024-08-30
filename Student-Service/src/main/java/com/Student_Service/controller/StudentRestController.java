@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.util.List;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/student")
@@ -83,8 +81,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentMajor={studentNumber}"})
-    public ResponseEntity<Object> getStudentMajor(@PathVariable String studentNumber){
+    @GetMapping(value = {"/getStudentMajor"})
+    public ResponseEntity<Object> getStudentMajor(@RequestParam String studentNumber){
         try {
             var dto = service.getMajorByStudentNumber(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -103,8 +101,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/deleteStudent={studentNumber}"})
-    public ResponseEntity<Object> deleteStudent(@PathVariable String studentNumber){
+    @GetMapping(value = {"/deleteStudent"})
+    public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
         }catch (Exception exception){
