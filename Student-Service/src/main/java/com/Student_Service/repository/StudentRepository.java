@@ -32,7 +32,7 @@ public interface StudentRepository extends JpaRepository<Student,String> {
     @Query(value = """
             SELECT stu
             FROM Student as stu
-            WHERE CONCAT(stu.firstName,' ',stu.middleName,' ',stu.lastName) LIKE %:fullName%
+            WHERE CONCAT(stu.firstName,' ',stu.middleName,' ',stu.lastName) = :fullName
             """)
     Student getStudentByFullName(String fullName);
 
@@ -41,5 +41,5 @@ public interface StudentRepository extends JpaRepository<Student,String> {
             FROM Student as stu
             WHERE stu.citizenshipId = :citizenshipId
             """)
-    Student getStudentByCitizenshipID(Integer citizenshipId);
+    List<Student> getStudentByCitizenshipID(Integer citizenshipId);
 }

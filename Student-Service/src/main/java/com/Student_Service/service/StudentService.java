@@ -17,6 +17,6 @@ public interface StudentService {
     StudentDto getStudentByStudentNumber(String studentNumber);
     List<StudentMajorDto> getMajorByStudentNumber(String studentNumber);
     StudentDto getStudentByFullName(String fullName);
-    StudentDto getStudentByCitizenshipID(Integer citizenshipId);
+    List<StudentDto> getStudentByCitizenshipID(Integer citizenshipId);
     CertificateDto getCertificate(String studentNumber);
 }

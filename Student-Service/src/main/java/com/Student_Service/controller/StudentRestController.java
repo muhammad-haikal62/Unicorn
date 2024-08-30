@@ -46,7 +46,7 @@ public class StudentRestController {
     @GetMapping(value = {"/getStudentByFullName={fullName}"})
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
         try{
-            var student= service.getStudentByFullName(fullName);
+            var student = service.getStudentByFullName(fullName);
             return ResponseEntity.status(HttpStatus.OK).body(student);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
@@ -56,8 +56,8 @@ public class StudentRestController {
     @GetMapping(value = {"/getStudentByCitizenshipID={citizenshipId}"})
     public ResponseEntity<Object> getStudentByCitizenshipID(@PathVariable Integer citizenshipId){
         try{
-            var student= service.getStudentByCitizenshipID(citizenshipId);
-            return ResponseEntity.status(HttpStatus.OK).body(student);
+            List<StudentDto> students = service.getStudentByCitizenshipID(citizenshipId);
+            return ResponseEntity.status(HttpStatus.OK).body(students);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
         }
