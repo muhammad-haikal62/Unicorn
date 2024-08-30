@@ -13,4 +13,10 @@ public interface StudentRepository extends JpaRepository<Student,String> {
             FROM Student as stu
             """)
     List<Student> getStudentByPage(Pageable pageable);
+
+    @Query(value = """
+            SELECT count(stu)
+            FROM Student as stu
+            """)
+    Integer getTotal();
 }

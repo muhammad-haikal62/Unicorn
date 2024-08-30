@@ -29,10 +29,21 @@ public class StudentServiceImplemention implements StudentService {
         List<StudentDto> gridStudents = new LinkedList<>();
         for (var stu : students){
             StudentDto studentDto = new StudentDto();
-            studentDto.setId(stu.getId());
+            studentDto.setStudentNumber(stu.getStudentNumber());
+            studentDto.setUsername(stu.getUsername());
+            studentDto.setPassword(stu.getPassword());
+            studentDto.setTitle(stu.getTitle());
             studentDto.setFirstName(stu.getFirstName());
+            studentDto.setMiddleName(stu.getMiddleName());
             studentDto.setLastName(stu.getLastName());
-            studentDto.setPenjurusan(stu.getPenjurusan());
+            studentDto.setGender(stu.getGender());
+            studentDto.setBirthDate(stu.getBirthDate());
+            studentDto.setBirthCountryId(stu.getBirthCountryId());
+            studentDto.setBirthCityId(stu.getBirthCityId());
+            studentDto.setCitizenshipId(stu.getCitizenshipId());
+            studentDto.setAddress(stu.getAddress());
+            studentDto.setRegisterDate(stu.getRegisterDate());
+            studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
             gridStudents.add(studentDto);
         }
         return gridStudents;
