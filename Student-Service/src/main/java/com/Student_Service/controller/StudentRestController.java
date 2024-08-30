@@ -102,10 +102,10 @@ public class StudentRestController {
     }
 
     @GetMapping(value = {"/deleteStudent"})
-    public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber){
+    public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
-        }catch (Exception exception){
+        } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
         }
     }
