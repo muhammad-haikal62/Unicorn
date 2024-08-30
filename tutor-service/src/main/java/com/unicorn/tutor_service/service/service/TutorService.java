@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface TutorService {
     List<TutorGridDto> getAllTutor(int page);
+    TutorGridDto getTutorById(String id);
+    TutorGridDto getTutorByName(String name);
     int getTotalPage();
     void save(UpdateInsertTutor updateInsertTutor);
     void delete(String staffNumber);
