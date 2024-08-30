@@ -1,24 +1,31 @@
 package com.Student_Service.service.implemention;
 
+import com.Student_Service.dto.CertificateDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.dto.StudentInsertDto;
 import com.Student_Service.entity.Student;
+import com.Student_Service.repository.CertificateRepository;
 import com.Student_Service.repository.StudentRepository;
 import com.Student_Service.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class StudentServiceImplemention implements StudentService {
     private final StudentRepository repository;
+    private final CertificateRepository certificateRepository;
+    
 
     @Autowired
-    public StudentServiceImplemention(StudentRepository repository) {
+    public StudentServiceImplemention(StudentRepository repository, CertificateRepository certificateRepository) {
         this.repository = repository;
+        this.certificateRepository = certificateRepository;
     }
 
     @Override
@@ -161,5 +168,10 @@ public class StudentServiceImplemention implements StudentService {
         var student = repository.findById(studentNumber).orElseThrow();
         repository.delete(student);
         return true;
+    }
+
+    @Override
+    public CertificateDto getCertificate(String studentNumber) {
+        return this.certificateRepository.getCertificate(studentNumber);
     }
 }

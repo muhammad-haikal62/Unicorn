@@ -1,6 +1,15 @@
 spring:
   application:
     name: location-service
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=Unicorn;encrypt=true;trustServerCertificate=true
+    username: haikal
+    password: haikal2103
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 server:
   port: 8082

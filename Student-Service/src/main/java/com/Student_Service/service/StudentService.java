@@ -1,5 +1,6 @@
 package com.Student_Service.service;
 
+import com.Student_Service.dto.CertificateDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.dto.StudentInsertDto;
 import com.Student_Service.entity.Student;
@@ -16,4 +17,5 @@ public interface StudentService {
     StudentDto getStudentByStudentNumber(String studentNumber);
     StudentDto getStudentByFullName(String fullName);
     StudentDto getStudentByCitizenshipID(Integer citizenshipId);
+    CertificateDto getCertificate(String studentNumber);
 }
