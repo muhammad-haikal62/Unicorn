@@ -1,5 +1,6 @@
 package com.unicorn.tutor_service.service.implementation;
 
+import com.unicorn.tutor_service.dto.TutorGridDto;
 import com.unicorn.tutor_service.dto.UpdateInsertTutor;
 import com.unicorn.tutor_service.entity.Tutor;
 import com.unicorn.tutor_service.repository.TutorRepository;
@@ -7,12 +8,37 @@ import com.unicorn.tutor_service.service.service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Service
 public class TutorServiceImplementation implements TutorService {
     private final TutorRepository repository;
+    private final int rowInPage=10;
+
     @Autowired
     public TutorServiceImplementation(TutorRepository repository) {
         this.repository = repository;
+    }
+
+    @Override
+    public List<TutorGridDto> getAllTutor(int page) {
+        List<TutorGridDto> tutorGridDtos = new LinkedList<>();
+        List<Tutor> tutors = repository.getALlTutor();
+
+        for(Tutor tutor : tutors){
+            TutorGridDto tutorGridDto = new TutorGridDto();
+            tutorGridDto.setFullName(tutor.getFirstName() + tutor.getMiddleName() + tutor.getLastName());
+            tutorGridDto.setGender(tutor.getGender());
+            tutorGridDto.setBirthDate(tutor.getBirthDate());
+            tutorGridDtos.add(tutorGridDto);
+        }
+        return tutorGridDtos;
+    }
+
+    @Override
+    public int getTotalPage() {
+        return (int)(Math.ceil(((double) repository.count())/ rowInPage));
     }
 
     @Override
