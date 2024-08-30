@@ -1,5 +1,6 @@
 package com.unicorn.subject_service.controller;
 
+import com.unicorn.subject_service.dto.MajorGrid;
 import com.unicorn.subject_service.dto.UpdateInsertMajor;
 import com.unicorn.subject_service.service.MajorService;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,15 @@ public class MajorController {
 
     public MajorController(MajorService service) {
         this.service = service;
+    }
+
+    @GetMapping("")
+    public ResponseEntity<Object> getMajors(){
+        try{
+            MajorGrid majorGrid =
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
     }
 
     @PostMapping("save")
