@@ -20,4 +20,8 @@ public class City {
 
     @Column(name = "StateID", nullable = false)
     private Integer stateId;
+
+    @ManyToOne
+    @JoinColumn(name = "StateID", insertable = false,updatable = false)
+    private State state;
 }
