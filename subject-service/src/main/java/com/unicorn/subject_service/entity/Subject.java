@@ -23,10 +23,10 @@ public class Subject {
     @OneToMany(mappedBy = "prerequisite")
     private List<Prerequisite> prerequisiteList;
 
-    @Column(name = "Code")
+    @Column(name = "Code", nullable = false)
     private String code;
 
-    @Column(name = "Name")
+    @Column(name = "Name", nullable = false)
     private String name;
 
     @Column(name = "MajorID")
@@ -46,5 +46,4 @@ public class Subject {
 
     @Column(name = "NonActiveDate")
     private LocalDateTime nonActiveDate;
-
 }
