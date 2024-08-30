@@ -20,8 +20,6 @@ public class StudentServiceImplemention implements StudentService {
         this.repository = repository;
     }
 
-
-
     @Override
     public List<StudentDto> getAllStudentPage(Integer page) {
         Pageable pageable = PageRequest.of(page-1, 5, Sort.by("id"));
@@ -73,12 +71,14 @@ public class StudentServiceImplemention implements StudentService {
 
 
     @Override
-    public boolean editStudent(Integer studentNumber) {
+    public boolean editStudent(String studentNumber) {
         return false;
     }
 
     @Override
-    public boolean deleteStudent(Integer studentNumber) {
-        return false;
+    public boolean deleteStudent(String studentNumber) {
+        var student = repository.findById(studentNumber).orElseThrow();
+        repository.delete(student);
+        return true;
     }
 }
