@@ -2,8 +2,6 @@ package com.Student_Service.controller;
 
 import com.Student_Service.dto.StudentUpsertDto;
 import com.Student_Service.dto.StudentDto;
-import com.Student_Service.dto.StudentInsertDto;
-import com.Student_Service.entity.Student;
 import com.Student_Service.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +33,7 @@ public class StudentRestController {
     }
 
     @GetMapping("/getStudentByNumber")
-    public ResponseEntity<Object> getStudentBystudentNumber(@RequestBody String studentNumber){
+    public ResponseEntity<Object> getStudentBystudentNumber(@RequestParam String studentNumber){
         try{
             StudentDto student = service.getStudentByStudentNumber(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(student);
