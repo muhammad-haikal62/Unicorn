@@ -13,7 +13,7 @@ public interface StudentService {
     void saveStudent(StudentUpsertDto studentUpsertDto);
     Integer totalPage();
     void editStudent(StudentUpsertDto dto);
-    String deleteStudent(String studentNumber);
+    void deleteStudent(String studentNumber);
     StudentDto getStudentByStudentNumber(String studentNumber);
     List<StudentMajorDto> getMajorByStudentNumber(String studentNumber);
     StudentDto getStudentByFullName(String fullName);

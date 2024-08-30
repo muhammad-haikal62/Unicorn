@@ -190,10 +190,9 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public String deleteStudent(String studentNumber) {
+    public void deleteStudent(String studentNumber) {
         var student = repository.findById(studentNumber).orElseThrow();
         repository.delete(student);
-        return "Student Deleted!";
     }
 
     @Override

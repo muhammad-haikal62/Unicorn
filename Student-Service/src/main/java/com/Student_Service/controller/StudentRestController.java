@@ -104,9 +104,10 @@ public class StudentRestController {
     @GetMapping(value = {"/deleteStudent"})
     public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
+            service.deleteStudent(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body("Student Deleted!");
         } catch (Exception exception) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot be deleted, have connection with other table!");
         }
     }
 }
