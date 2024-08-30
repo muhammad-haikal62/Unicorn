@@ -1,12 +1,12 @@
 spring:
   application:
-    name: tutor-service
+    name: Student-Service
 
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=Unicorn;encrypt=true;trustServerCertificate=true
-    username: BC44
+    username: bc44
     password: bc44
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:
     hibernate:
@@ -14,9 +14,4 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 server:
-  port: 8083
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  port: 8081

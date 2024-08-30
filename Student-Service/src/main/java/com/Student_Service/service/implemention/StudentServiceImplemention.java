@@ -128,25 +128,29 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public StudentDto getStudentByCitizenshipID(Integer citizenshipId) {
-        Student stu = repository.getStudentByCitizenshipID(citizenshipId);
-        StudentDto studentDto = new StudentDto();
-        studentDto.setStudentNumber(stu.getStudentNumber());
-        studentDto.setUsername(stu.getUsername());
-        studentDto.setPassword(stu.getPassword());
-        studentDto.setTitle(stu.getTitle());
-        studentDto.setFirstName(stu.getFirstName());
-        studentDto.setMiddleName(stu.getMiddleName());
-        studentDto.setLastName(stu.getLastName());
-        studentDto.setGender(stu.getGender());
-        studentDto.setBirthDate(stu.getBirthDate());
-        studentDto.setBirthCountryId(stu.getBirthCountryId());
-        studentDto.setBirthCityId(stu.getBirthCityId());
-        studentDto.setCitizenshipId(stu.getCitizenshipId());
-        studentDto.setAddress(stu.getAddress());
-        studentDto.setRegisterDate(stu.getRegisterDate());
-        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
-        return studentDto;
+    public List<StudentDto> getStudentByCitizenshipID(Integer citizenshipId) {
+        List<Student> students = repository.getStudentByCitizenshipID(citizenshipId);
+        List<StudentDto> gridStudents = new LinkedList<>();
+        for (var stu : students){
+            StudentDto studentDto = new StudentDto();
+            studentDto.setStudentNumber(stu.getStudentNumber());
+            studentDto.setUsername(stu.getUsername());
+            studentDto.setPassword(stu.getPassword());
+            studentDto.setTitle(stu.getTitle());
+            studentDto.setFirstName(stu.getFirstName());
+            studentDto.setMiddleName(stu.getMiddleName());
+            studentDto.setLastName(stu.getLastName());
+            studentDto.setGender(stu.getGender());
+            studentDto.setBirthDate(stu.getBirthDate());
+            studentDto.setBirthCountryId(stu.getBirthCountryId());
+            studentDto.setBirthCityId(stu.getBirthCityId());
+            studentDto.setCitizenshipId(stu.getCitizenshipId());
+            studentDto.setAddress(stu.getAddress());
+            studentDto.setRegisterDate(stu.getRegisterDate());
+            studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+            gridStudents.add(studentDto);
+        }
+        return gridStudents;
     }
 
     @Override
@@ -186,10 +190,9 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public String deleteStudent(String studentNumber) {
+    public void deleteStudent(String studentNumber) {
         var student = repository.findById(studentNumber).orElseThrow();
         repository.delete(student);
-        return "Student Deleted!";
     }
 
     @Override

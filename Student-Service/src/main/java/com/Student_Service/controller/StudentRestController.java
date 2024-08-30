@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.util.List;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/student")
@@ -46,7 +44,7 @@ public class StudentRestController {
     @GetMapping(value = {"/getStudentByFullName={fullName}"})
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
         try{
-            var student= service.getStudentByFullName(fullName);
+            var student = service.getStudentByFullName(fullName);
             return ResponseEntity.status(HttpStatus.OK).body(student);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
@@ -56,8 +54,8 @@ public class StudentRestController {
     @GetMapping(value = {"/getStudentByCitizenshipID={citizenshipId}"})
     public ResponseEntity<Object> getStudentByCitizenshipID(@PathVariable Integer citizenshipId){
         try{
-            var student= service.getStudentByCitizenshipID(citizenshipId);
-            return ResponseEntity.status(HttpStatus.OK).body(student);
+            List<StudentDto> students = service.getStudentByCitizenshipID(citizenshipId);
+            return ResponseEntity.status(HttpStatus.OK).body(students);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
         }
@@ -83,8 +81,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentMajor={studentNumber}"})
-    public ResponseEntity<Object> getStudentMajor(@PathVariable String studentNumber){
+    @GetMapping(value = {"/getStudentMajor"})
+    public ResponseEntity<Object> getStudentMajor(@RequestParam String studentNumber){
         try {
             var dto = service.getMajorByStudentNumber(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -103,12 +101,13 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/deleteStudent={studentNumber}"})
-    public ResponseEntity<Object> deleteStudent(@PathVariable String studentNumber){
+    @GetMapping(value = {"/deleteStudent"})
+    public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.deleteStudent(studentNumber));
-        }catch (Exception exception){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("There is Runtime Error");
+            service.deleteStudent(studentNumber);
+            return ResponseEntity.status(HttpStatus.OK).body("Student Deleted!");
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot be deleted, have connection with other table!");
         }
     }
 }
