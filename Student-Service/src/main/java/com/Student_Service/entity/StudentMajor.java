@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,4 +29,7 @@ public class StudentMajor {
 
     @Column(name = "CompleteDate", nullable = false)
     private LocalDate completeDate;
+
+    @OneToMany(mappedBy = "studentMajor")
+    private List<Major> majors;
 }

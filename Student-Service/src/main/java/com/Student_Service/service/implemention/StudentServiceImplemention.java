@@ -2,8 +2,12 @@ package com.Student_Service.service.implemention;
 
 import com.Student_Service.dto.CertificateDto;
 import com.Student_Service.dto.StudentDto;
+import com.Student_Service.dto.StudentMajorDto;
 import com.Student_Service.dto.StudentInsertDto;
 import com.Student_Service.entity.Student;
+import com.Student_Service.entity.StudentMajor;
+import com.Student_Service.repository.MajorRepository;
+import com.Student_Service.repository.StudentMajorRepository;
 import com.Student_Service.repository.CertificateRepository;
 import com.Student_Service.repository.StudentRepository;
 import com.Student_Service.service.StudentService;
@@ -19,12 +23,16 @@ import java.util.List;
 @Service
 public class StudentServiceImplemention implements StudentService {
     private final StudentRepository repository;
+    private final StudentMajorRepository studentMajorRepository;
+    private final MajorRepository majorRepository;
     private final CertificateRepository certificateRepository;
-    
+
 
     @Autowired
-    public StudentServiceImplemention(StudentRepository repository, CertificateRepository certificateRepository) {
+    public StudentServiceImplemention(StudentRepository repository, StudentMajorRepository studentMajorRepository, MajorRepository majorRepository, CertificateRepository certificateRepository) {
         this.repository = repository;
+        this.studentMajorRepository = studentMajorRepository;
+        this.majorRepository = majorRepository;
         this.certificateRepository = certificateRepository;
     }
 
@@ -99,6 +107,50 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
+    public StudentDto getStudentByFullName(String fullName) {
+        Student stu = repository.getStudentByFullName(fullName);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+    @Override
+    public StudentDto getStudentByCitizenshipID(Integer citizenshipId) {
+        Student stu = repository.getStudentByCitizenshipID(citizenshipId);
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudentNumber(stu.getStudentNumber());
+        studentDto.setUsername(stu.getUsername());
+        studentDto.setPassword(stu.getPassword());
+        studentDto.setTitle(stu.getTitle());
+        studentDto.setFirstName(stu.getFirstName());
+        studentDto.setMiddleName(stu.getMiddleName());
+        studentDto.setLastName(stu.getLastName());
+        studentDto.setGender(stu.getGender());
+        studentDto.setBirthDate(stu.getBirthDate());
+        studentDto.setBirthCountryId(stu.getBirthCountryId());
+        studentDto.setBirthCityId(stu.getBirthCityId());
+        studentDto.setCitizenshipId(stu.getCitizenshipId());
+        studentDto.setAddress(stu.getAddress());
+        studentDto.setRegisterDate(stu.getRegisterDate());
+        studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
+        return studentDto;
+    }
+
+    @Override
     public Integer totalPage(){
         int total = repository.getTotal();
         int hasil = 0;
@@ -124,6 +176,21 @@ public class StudentServiceImplemention implements StudentService {
         var student = repository.findById(studentNumber).orElseThrow();
         repository.delete(student);
         return true;
+    }
+
+    @Override
+    public List<StudentMajorDto> getMajorByStudentNumber(String studentNumber) {
+        var majorsList = new LinkedList<StudentMajorDto>();
+        for(var major : studentMajorRepository.getMajorByStudentNumber(studentNumber)) {
+            var majorDetail = majorRepository.findById(major.getMajorId()).orElseThrow();
+            var majors = new StudentMajorDto();
+            majors.setName(majorDetail.getName());
+            majors.setType(majorDetail.getType());
+            majors.setLevel(majorDetail.getLevel());
+            majors.setDescription(majorDetail.getDescription());
+            majorsList.add(majors);
+        }
+        return majorsList;
     }
 
     @Override
