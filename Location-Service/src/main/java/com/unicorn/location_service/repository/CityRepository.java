@@ -19,7 +19,8 @@ public interface CityRepository extends JpaRepository<City, Long> {
             )
             FROM City AS ct
             JOIN ct.state AS st
+            WHERE ct.stateId = :stateId
             """)
-    List<CityDto> getCities(Pageable pagination);
+    List<CityDto> getCities(Pageable pagination, Long stateId);
 
 }

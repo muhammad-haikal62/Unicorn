@@ -21,8 +21,9 @@ public class CityServiceImplementation implements CityService {
     }
 
     @Override
-    public List<CityDto> getCities(int page){
+    public List<CityDto> getCities(int page, Long stateId){
         Pageable pagination = PageRequest.of(page - 1, rowInPage);
-        return repository.getCities(pagination);
+        return repository.getCities(pagination, stateId);
     };
+
 }

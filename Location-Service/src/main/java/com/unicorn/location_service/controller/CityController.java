@@ -23,10 +23,11 @@ public class CityController {
 
     @GetMapping("")
     public ResponseEntity<Object> get(
-            @RequestParam(defaultValue = "1") int page
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam Long stateId
     ){
         try{
-            List<CityDto> cities = service.getCities(page);
+            List<CityDto> cities = service.getCities(page, stateId);
             return ResponseEntity.ok(cities);
         }catch (Exception ex){
             return ResponseEntity.internalServerError().body(ex.getMessage());
