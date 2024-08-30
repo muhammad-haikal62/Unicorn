@@ -5,10 +5,7 @@ import com.unicorn.enrollment_service.service.EnrollmentService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("enrollment")
@@ -31,6 +28,15 @@ public class EnrollmentController {
             return ResponseEntity.ok().body(service.insertEnrollment(dto));
         } catch (Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("page")
+    public ResponseEntity<Object> getEnrollment(@RequestParam(defaultValue = "1") Integer page) {
+        try {
+            return ResponseEntity.ok(service.getEnrollmentByPagination(page));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error");
         }
     }
 }
