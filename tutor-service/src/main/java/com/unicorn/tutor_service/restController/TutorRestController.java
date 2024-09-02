@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("tutor")
+@RequestMapping("api/tutor")
 public class TutorRestController {
     private final TutorService service;
     @Autowired
@@ -17,9 +17,9 @@ public class TutorRestController {
         this.service = service;
     }
 
-    @GetMapping("/{page}")
+    @GetMapping("")
     public ResponseEntity<Object> find(
-            @PathVariable int page
+            @RequestParam int page
     ){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.getAllTutor(page));
