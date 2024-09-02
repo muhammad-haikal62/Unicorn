@@ -21,7 +21,7 @@ public class StudentRestController {
         this.service = service;
     }
 
-    @GetMapping("/getStudentsPage")
+    @GetMapping("")
     public ResponseEntity<Object> getStudentsByPage(@RequestParam Integer page){
         try{
             List<StudentDto> students = service.getAllStudentPage(page);
@@ -31,9 +31,11 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping("/getStudentByNumber")
-    public ResponseEntity<Object> getStudentBystudentNumber(@RequestParam String studentNumber){
+    @GetMapping("/**")
+    public ResponseEntity<Object> getStudentBystudentNumber(HttpServletRequest request){
         try{
+            String requestURI = request.getRequestURI();
+            String studentNumber = requestURI.substring(requestURI.lastIndexOf("/api/student/") + "/api/student/".length());
             StudentDto student = service.getStudentByStudentNumber(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(student);
         }catch (Exception exception){
