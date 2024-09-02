@@ -1,49 +1,44 @@
-package com.unicorn.subject_service.entity;
+package com.unicorn.enrollment_service.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
+@Entity
 @Table(name = "Subject")
 public class Subject {
     @Id
     @Column(name = "ID")
-    private Integer id;
-
-    @OneToMany(mappedBy = "subject")
-    private List<Prerequisite> subjectList;
-
-    @OneToMany(mappedBy = "prerequisite")
-    private List<Prerequisite> prerequisiteList;
-
-    @Column(name = "Code", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer Id;
+    @Column(name = "Code")
     private String code;
-
-    @Column(name = "Name", nullable = false)
+    @Column(name = "Name")
     private String name;
-
     @Column(name = "MajorID")
     private Integer majorId;
-
     @Column(name = "Description")
     private String description;
-
     @Column(name = "Level")
     private String level;
-
     @Column(name = "CreditPoint")
     private Integer creditPoint;
-
     @Column(name = "Cost")
     private BigDecimal cost;
-
     @Column(name = "NonActiveDate")
     private LocalDateTime nonActiveDate;
+
+    @OneToMany(mappedBy = "subject")
+    private List<Competency> competency = new LinkedList<>();
 }

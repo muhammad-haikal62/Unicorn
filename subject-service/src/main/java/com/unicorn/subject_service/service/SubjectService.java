@@ -5,8 +5,10 @@ import com.unicorn.subject_service.dto.SubjectSaveDto;
 
 import java.util.List;
 
-public interface SubjectService{
-    List<SubjectDto> get(Integer page);
+public interface SubjectService {
+
+    List<SubjectDto> getSubject(Integer page, Integer subjectId, Integer majorId, Integer prerequisiteId);
     void save(SubjectSaveDto dto);
     void delete(Integer id);
+
 }
