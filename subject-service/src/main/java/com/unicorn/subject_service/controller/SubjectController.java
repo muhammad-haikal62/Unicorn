@@ -49,7 +49,7 @@ public class SubjectController {
         }
     }
 
-    @DeleteMapping("delete")
+    @DeleteMapping("")
     public ResponseEntity<Object> delete (@RequestParam(name = "id") Integer id){
         try {
             service.delete(id);

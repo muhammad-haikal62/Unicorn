@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("major")
+@RequestMapping("api/major")
 public class MajorController {
     private final MajorService service;
 
@@ -56,7 +56,7 @@ public class MajorController {
         }
     }
 
-    @PostMapping("save")
+    @PostMapping("")
     public ResponseEntity<Object> saveMajor(@RequestBody UpdateInsertMajor dto){
         try {
             service.save(dto);
@@ -66,7 +66,7 @@ public class MajorController {
         }
     }
 
-    @DeleteMapping("delete")
+    @DeleteMapping("")
     public ResponseEntity<Integer> deleteMajor(@RequestParam Integer id){
         try {
             service.delete(id);
