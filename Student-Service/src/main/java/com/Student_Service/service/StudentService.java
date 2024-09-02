@@ -8,7 +8,7 @@ import com.Student_Service.dto.StudentUpsertDto;
 import java.util.List;
 
 public interface StudentService {
-    List<StudentDto> getAllStudentPage(Integer page);
+    List<StudentDto> getAllStudent(Integer page, Integer citizenshipId);
 
     void saveStudent(StudentUpsertDto studentUpsertDto);
     Integer totalPage();
@@ -17,6 +17,5 @@ public interface StudentService {
     StudentDto getStudentByStudentNumber(String studentNumber);
     List<StudentMajorDto> getMajorByStudentNumber(String studentNumber);
     StudentDto getStudentByFullName(String fullName);
-    List<StudentDto> getStudentByCitizenshipID(Integer citizenshipId);
     CertificateDto getCertificate(String studentNumber);
 }

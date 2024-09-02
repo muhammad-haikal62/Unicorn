@@ -22,9 +22,9 @@ public class StudentRestController {
     }
 
     @GetMapping("")
-    public ResponseEntity<Object> getStudentsByPage(@RequestParam Integer page){
+    public ResponseEntity<Object> getStudents(@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer citizenshipId){
         try{
-            List<StudentDto> students = service.getAllStudentPage(page);
+            List<StudentDto> students = service.getAllStudent(page, citizenshipId);
             return ResponseEntity.status(HttpStatus.OK).body(students);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
@@ -42,7 +42,7 @@ public class StudentRestController {
     }
 
 
-    @GetMapping(value = {"FullName={fullName}"})
+    @GetMapping("{fullName}")
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
         try{
             var student = service.getStudentByFullName(fullName);
@@ -52,17 +52,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"CitizenshipID={citizenshipId}"})
-    public ResponseEntity<Object> getStudentByCitizenshipID(@PathVariable Integer citizenshipId){
-        try{
-            List<StudentDto> students = service.getStudentByCitizenshipID(citizenshipId);
-            return ResponseEntity.status(HttpStatus.OK).body(students);
-        }catch (Exception exception){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
-        }
-    }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Object> post(@RequestBody StudentUpsertDto dto){
         try{
             service.saveStudent(dto);

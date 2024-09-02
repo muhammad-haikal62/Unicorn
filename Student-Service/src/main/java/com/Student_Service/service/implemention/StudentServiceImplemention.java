@@ -36,9 +36,9 @@ public class StudentServiceImplemention implements StudentService {
     }
 
     @Override
-    public List<StudentDto> getAllStudentPage(Integer page) {
+    public List<StudentDto> getAllStudent(Integer page, Integer citizenshipId) {
         Pageable pageable = PageRequest.of(page-1, 5, Sort.by("id"));
-        List<Student> students = repository.getStudentByPage(pageable);
+        List<Student> students = repository.getStudent(pageable,citizenshipId);
         List<StudentDto> gridStudents = new LinkedList<>();
         for (var stu : students){
             StudentDto studentDto = new StudentDto();
@@ -125,32 +125,6 @@ public class StudentServiceImplemention implements StudentService {
         studentDto.setRegisterDate(stu.getRegisterDate());
         studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
         return studentDto;
-    }
-
-    @Override
-    public List<StudentDto> getStudentByCitizenshipID(Integer citizenshipId) {
-        List<Student> students = repository.getStudentByCitizenshipID(citizenshipId);
-        List<StudentDto> gridStudents = new LinkedList<>();
-        for (var stu : students){
-            StudentDto studentDto = new StudentDto();
-            studentDto.setStudentNumber(stu.getStudentNumber());
-            studentDto.setUsername(stu.getUsername());
-            studentDto.setPassword(stu.getPassword());
-            studentDto.setTitle(stu.getTitle());
-            studentDto.setFirstName(stu.getFirstName());
-            studentDto.setMiddleName(stu.getMiddleName());
-            studentDto.setLastName(stu.getLastName());
-            studentDto.setGender(stu.getGender());
-            studentDto.setBirthDate(stu.getBirthDate());
-            studentDto.setBirthCountryId(stu.getBirthCountryId());
-            studentDto.setBirthCityId(stu.getBirthCityId());
-            studentDto.setCitizenshipId(stu.getCitizenshipId());
-            studentDto.setAddress(stu.getAddress());
-            studentDto.setRegisterDate(stu.getRegisterDate());
-            studentDto.setTotalCreditPoint(stu.getTotalCreditPoint());
-            gridStudents.add(studentDto);
-        }
-        return gridStudents;
     }
 
     @Override
