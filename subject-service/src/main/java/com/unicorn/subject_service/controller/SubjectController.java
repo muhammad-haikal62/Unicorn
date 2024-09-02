@@ -20,7 +20,7 @@ public class SubjectController {
     }
 
     @GetMapping("")
-    public ResponseEntity<Object> getSubjects(@RequestParam(defaultValue = "0") Integer page,
+    public ResponseEntity<Object> getSubjects(@RequestParam(defaultValue = "1") Integer page,
                                               @RequestParam(defaultValue = "0") Integer subjectId,
                                               @RequestParam(defaultValue = "0") Integer majorId,
                                               @RequestParam(defaultValue = "0") Integer prerequisiteId) {

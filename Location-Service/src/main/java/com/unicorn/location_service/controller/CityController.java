@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("city")
+@RequestMapping("/api/location")
 public class CityController {
     private final CityService service;
 
@@ -21,7 +21,7 @@ public class CityController {
         this.service = service;
     }
 
-    @GetMapping("")
+    @GetMapping("city")
     public ResponseEntity<Object> get(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam Long stateId

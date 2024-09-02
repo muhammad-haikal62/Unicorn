@@ -3,8 +3,8 @@ spring:
     name: subject-service
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=Unicorn;encrypt=true;trustServerCertificate=true
-    username: najim
-    password: 12345678
+    username: bc44
+    password: bc44
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:

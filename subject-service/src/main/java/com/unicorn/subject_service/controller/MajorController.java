@@ -6,6 +6,7 @@ import com.unicorn.subject_service.entity.Major;
 import com.unicorn.subject_service.service.MajorService;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("major")
+@RequestMapping("/api/major")
 public class MajorController {
     private final MajorService service;
 
+    @Autowired
     public MajorController(MajorService service) {
         this.service = service;
     }
@@ -44,7 +46,7 @@ public class MajorController {
         }
     }
 
-    @GetMapping("editMajor")
+    @GetMapping("/editMajor")
     public ResponseEntity<Object> editMajor(
             @RequestParam(required = false) Integer majorId
     ){
@@ -56,7 +58,7 @@ public class MajorController {
         }
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public ResponseEntity<Object> saveMajor(@RequestBody UpdateInsertMajor dto){
         try {
             service.save(dto);
