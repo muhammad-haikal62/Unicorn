@@ -3,6 +3,7 @@ package com.Student_Service.controller;
 import com.Student_Service.dto.StudentUpsertDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,7 +82,7 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentMajor"})
+    @GetMapping("/major")
     public ResponseEntity<Object> getStudentMajor(@RequestParam String studentNumber){
         try {
             var dto = service.getMajorByStudentNumber(studentNumber);
@@ -91,9 +92,10 @@ public class StudentRestController {
         }
     }
 
-    @PostMapping("/editStudent")
-    public ResponseEntity<Object> edit(@RequestBody StudentUpsertDto dto){
+    @PutMapping
+    public ResponseEntity<Object> edit(@RequestParam String studentNumber, @RequestBody StudentUpsertDto dto){
         try{
+            dto.setStudentNumber(studentNumber);
             service.editStudent(dto);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
         }catch (Exception exception){
@@ -101,13 +103,13 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/deleteStudent"})
+    @DeleteMapping
     public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
             service.deleteStudent(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body("Student Deleted!");
         } catch (Exception exception) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot be deleted, have connection with other table!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
         }
     }
 }

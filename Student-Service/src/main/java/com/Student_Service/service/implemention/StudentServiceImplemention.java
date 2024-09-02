@@ -171,7 +171,6 @@ public class StudentServiceImplemention implements StudentService {
     @Override
     public void editStudent(StudentUpsertDto dto) {
         var student = repository.findById(dto.getStudentNumber()).orElseThrow();
-        student.setStudentNumber(student.getStudentNumber());
         student.setUsername(dto.getUsername());
         student.setPassword(dto.getPassword());
         student.setTitle(dto.getTitle());
