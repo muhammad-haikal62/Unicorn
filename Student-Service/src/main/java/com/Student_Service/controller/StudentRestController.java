@@ -41,7 +41,7 @@ public class StudentRestController {
     }
 
 
-    @GetMapping(value = {"/getStudentByFullName={fullName}"})
+    @GetMapping(value = {"FullName={fullName}"})
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
         try{
             var student = service.getStudentByFullName(fullName);
@@ -51,7 +51,7 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentByCitizenshipID={citizenshipId}"})
+    @GetMapping(value = {"CitizenshipID={citizenshipId}"})
     public ResponseEntity<Object> getStudentByCitizenshipID(@PathVariable Integer citizenshipId){
         try{
             List<StudentDto> students = service.getStudentByCitizenshipID(citizenshipId);
@@ -61,7 +61,7 @@ public class StudentRestController {
         }
     }
 
-    @PostMapping("/saveStudent")
+    @PostMapping()
     public ResponseEntity<Object> post(@RequestBody StudentUpsertDto dto){
         try{
             service.saveStudent(dto);
