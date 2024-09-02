@@ -85,10 +85,8 @@ public class StudentRestController {
     }
 
     @GetMapping("/major")
-    public ResponseEntity<Object> getStudentMajor(HttpServletRequest request){
+    public ResponseEntity<Object> getStudentMajor(@RequestParam String studentNumber){
         try {
-            String requestURI = request.getRequestURI();
-            String studentNumber = requestURI.substring(requestURI.lastIndexOf("/api/student/major/") + "/api/student/major/".length());
             var dto = service.getMajorByStudentNumber(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
         }catch (Exception exception){
@@ -107,10 +105,8 @@ public class StudentRestController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Object> deleteStudent(HttpServletRequest request) {
+    public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
-            String requestURI = request.getRequestURI();
-            String studentNumber = requestURI.substring(requestURI.lastIndexOf("/api/student/") + "/api/student/".length());
             service.deleteStudent(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body("Student Deleted!");
         } catch (Exception exception) {
