@@ -49,9 +49,9 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
     }
 
     @Override
-    public List<EnrollmentDto> getEnrollmentByPagination(Integer page) {
+    public List<EnrollmentDto> getEnrollment(Integer id, Integer majorId, Integer subjectId, Integer page) {
         Pageable pageable = PageRequest.of(page - 1, rowInPage);
-        return repository.getByPage(pageable);
+        return repository.getEnrollment(id, majorId, subjectId, pageable);
     }
 
     @Override
@@ -63,20 +63,5 @@ public class EnrollmentServiceImplementation implements EnrollmentService {
         periodDto.setStartDate(period.getStartDate());
         periodDto.setEndDate(period.getEndDate());
         return periodDto;
-    }
-
-    @Override
-    public EnrollmentDto getEnrollmentById(Integer id) {
-        return repository.getEnrollmentById(id);
-    }
-
-    @Override
-    public List<EnrollmentDto> getEnrollmentBySubjectId(Integer subjectId) {
-        return repository.getBySubjectId(subjectId);
-    }
-
-    @Override
-    public List<EnrollmentDto> getEnrollmentByMajorId(Integer majorId) {
-        return repository.getByMajorId(majorId);
     }
 }

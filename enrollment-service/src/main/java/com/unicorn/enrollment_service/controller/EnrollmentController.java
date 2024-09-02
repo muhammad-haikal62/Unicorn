@@ -3,13 +3,12 @@ package com.unicorn.enrollment_service.controller;
 import com.unicorn.enrollment_service.dto.InsertEnrollmentDto;
 import com.unicorn.enrollment_service.service.EnrollmentService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("enrollment")
+@RequestMapping("api/enrollment")
 public class EnrollmentController {
     private final EnrollmentService service;
 
@@ -17,7 +16,7 @@ public class EnrollmentController {
         this.service = service;
     }
 
-    @PostMapping("insert")
+    @PostMapping
     public ResponseEntity<Object> addEnrollment(
             @Valid @RequestBody InsertEnrollmentDto dto,
             BindingResult bindingResult
@@ -32,14 +31,20 @@ public class EnrollmentController {
         }
     }
 
-    @GetMapping("page")
-    public ResponseEntity<Object> getEnrollment(@RequestParam(defaultValue = "1") Integer page) {
+    @GetMapping
+    public ResponseEntity<Object> getEnrollment(
+            @RequestParam(required = false) Integer id,
+            @RequestParam(required = false) Integer majorId,
+            @RequestParam(required = false) Integer subjectId,
+            @RequestParam(defaultValue = "1") Integer page
+    ) {
         try {
-            return ResponseEntity.ok(service.getEnrollmentByPagination(page));
+            return ResponseEntity.ok(service.getEnrollment(id, majorId, subjectId, page));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Internal Server Error");
         }
     }
+
     @GetMapping("period")
     public ResponseEntity<Object> getPeriod(
             @RequestParam Integer id
@@ -49,39 +54,6 @@ public class EnrollmentController {
             return ResponseEntity.ok(detail);
         } catch (Exception exception) {
             return ResponseEntity.internalServerError().body(exception.getMessage());
-        }
-    }
-
-    @GetMapping
-    public ResponseEntity<Object> getEnrollmentById(@RequestParam Integer id) {
-        try {
-            return ResponseEntity.ok(service.getEnrollmentById(id));
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Internal Server Error");
-        }
-    }
-
-    @GetMapping("majorId")
-    public ResponseEntity<Object> getEnrollmentByMajorId(
-            @RequestParam(required = false)
-                    Integer majorId
-    ){
-        try {
-            return ResponseEntity.ok(service.getEnrollmentByMajorId(majorId));
-        } catch (Exception e){
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
-    }
-
-    @GetMapping("subjectId")
-    public ResponseEntity<Object> getEnrollmentBySubjectId(
-            @RequestParam(required = false)
-                    Integer subjectId
-    ){
-        try {
-            return ResponseEntity.ok(service.getEnrollmentBySubjectId(subjectId));
-        } catch (Exception e){
-            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
