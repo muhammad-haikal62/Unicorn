@@ -44,9 +44,9 @@ public class MajorController {
         }
     }
 
-    @GetMapping("editMajor")
+    @PutMapping("/{majorId}")
     public ResponseEntity<Object> editMajor(
-            @RequestParam(required = false) Integer majorId
+            @PathVariable Integer majorId
     ){
         try {
             UpdateInsertMajor updateInsertMajor = service.editMajor(majorId);

@@ -32,7 +32,7 @@ public class SubjectController {
         }
     }
 
-    @PostMapping("save")
+    @PostMapping("")
     public ResponseEntity<Object> post (
             @Valid @RequestBody SubjectSaveDto dto,
             BindingResult bindingResult){
