@@ -30,6 +30,7 @@ public class MajorServiceImplementation implements MajorService{
             majorGrid.setNonActiveDate(major.getNonActiveDate());
             majorGrid.setTotalCreditPoint(major.getTotalCreditPoint());
             majorGrid.setDescription(major.getDescription());
+            dto.add(majorGrid);
         }
         return dto;
     }

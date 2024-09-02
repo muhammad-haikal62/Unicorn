@@ -32,7 +32,7 @@ public class SubjectController {
         }
     }
 
-    @PostMapping("save")
+    @PostMapping("")
     public ResponseEntity<Object> post (
             @Valid @RequestBody SubjectSaveDto dto,
             BindingResult bindingResult){
@@ -49,7 +49,7 @@ public class SubjectController {
         }
     }
 
-    @DeleteMapping("delete")
+    @DeleteMapping("")
     public ResponseEntity<Object> delete (@RequestParam(name = "id") Integer id){
         try {
             service.delete(id);

@@ -17,6 +17,8 @@ public class EnrollmentDto {
     private String studentNumber;
     private LocalDateTime enrollDate;
     private Integer periodId;
+    private Integer majorId;
+    private Integer subjectId;
     private LocalDateTime transactionDate;
     private String paymentMethod;
     private BigDecimal fee;
