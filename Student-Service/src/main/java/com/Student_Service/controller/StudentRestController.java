@@ -93,9 +93,8 @@ public class StudentRestController {
     }
 
     @PutMapping
-    public ResponseEntity<Object> edit(@RequestParam String studentNumber, @RequestBody StudentUpsertDto dto){
+    public ResponseEntity<Object> edit(@RequestBody StudentUpsertDto dto){
         try{
-            dto.setStudentNumber(studentNumber);
             service.editStudent(dto);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
         }catch (Exception exception){
