@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("tutor")
+@RequestMapping("/api/tutor")
 public class TutorRestController {
     private final TutorService service;
     @Autowired

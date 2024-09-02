@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "City")
+@Table(name = "Tutor")
 public class Tutor {
     @Id
     @Column(name = "StaffNumber", length = 20)
