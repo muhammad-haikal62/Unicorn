@@ -8,9 +8,6 @@ import java.util.List;
 
 public interface EnrollmentService {
     String insertEnrollment(InsertEnrollmentDto dto);
-    List<EnrollmentDto> getEnrollmentByPagination(Integer page);
+    List<EnrollmentDto> getEnrollment( Integer id, Integer majorId, Integer subjectId, Integer page);
     PeriodByEnrollmentDto getPeriodByEnrollment(Integer id);
-    EnrollmentDto getEnrollmentById(Integer id);
-    List<EnrollmentDto> getEnrollmentBySubjectId(Integer subjectId);
-    List<EnrollmentDto> getEnrollmentByMajorId(Integer majorId);
 }
