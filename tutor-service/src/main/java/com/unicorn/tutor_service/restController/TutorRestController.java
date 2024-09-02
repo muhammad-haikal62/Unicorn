@@ -28,7 +28,7 @@ public class TutorRestController {
         }
     }
 
-    @PostMapping("add")
+    @PostMapping("")
     public ResponseEntity<Object> purchase(
             @RequestBody UpdateInsertTutor updateInsertTutor
             ) {
@@ -40,7 +40,7 @@ public class TutorRestController {
         }
     }
 
-    @PostMapping("delete")
+    @DeleteMapping("delete")
     public ResponseEntity<Object> delete(
             @RequestBody String staffNumber
     ) {
