@@ -63,8 +63,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getCertificateByStudentNumber={studentNumber}"})
-    public ResponseEntity<Object> getCertificateByStudentNumber(@PathVariable String studentNumber){
+    @GetMapping("/certificate")
+    public ResponseEntity<Object> getCertificateByStudentNumber(@RequestParam String studentNumber){
         try {
             var dto = service.getCertificate(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
