@@ -7,9 +7,10 @@
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
         <option value="$PROJECT_DIR$/Location-Service/pom.xml" />
         <option value="$PROJECT_DIR$/service-registry/pom.xml" />
-        <option value="$PROJECT_DIR$/Student-Service/pom.xml" />
         <option value="$PROJECT_DIR$/subject-service/pom.xml" />
         <option value="$PROJECT_DIR$/tutor-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Student-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Student-Service/pom.xml.orig" />
       </list>
     </option>
   </component>

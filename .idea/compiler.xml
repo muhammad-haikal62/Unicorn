@@ -2,13 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tutor-service" />
-        <module name="Student-Service" />
         <module name="subject-service" />
+        <module name="Student-Service" />
         <module name="location-service" />
         <module name="gateway-service" />
         <module name="enrollment-service" />
@@ -21,6 +22,9 @@
       <module name="location-service" target="17" />
       <module name="service-registry" target="17" />
       <module name="Student-Service" target="17" />
+      <module name="Student-Service (1)" target="1.5" />
+      <module name="Student-Service (1) (com.unicorn)" target="17" />
+      <module name="Student-Service (2)" target="1.5" />
       <module name="subject-service" target="17" />
       <module name="tutor-service" target="17" />
     </bytecodeTargetLevel>
