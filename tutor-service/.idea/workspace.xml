@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="352e294f-69e0-4d2a-8b77-61ab001ef631" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/repository/TutorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/repository/TutorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/implementation/TutorServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/implementation/TutorServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/service/TutorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/service/service/TutorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/restController/TutorRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unicorn/tutor_service/restController/TutorRestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +22,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -34,30 +32,36 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2lMnnbuIkq67VBLQuDGsmqlMJBA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TutorService.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "studentLocationTutorBranch",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TutorService.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;studentLocationTutorBranch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Unicorn\tutor-service" />
+      <recent name="D:\Unicorn\tutor-service\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Unicorn\tutor-service" />
+      <recent name="D:\Unicorn\tutor-service\.idea" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.unicorn.tutor_service" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TutorService" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.unicorn.tutor_service.TutorServiceApplication" />
@@ -76,6 +80,23 @@
       <option name="presentableId" value="Default" />
       <updated>1724998982466</updated>
     </task>
+    <task id="LOCAL-00001" summary="files restoration">
+      <option name="closed" value="true" />
+      <created>1725007693537</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725007693537</updated>
+    </task>
+    <task id="LOCAL-00002" summary="edit application.yml">
+      <option name="closed" value="true" />
+      <created>1725011475041</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725011475041</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,5 +109,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'studentLocationTutorBranch' of https://github.com/muhammad-haikal62/Unicorn into studentLocationTutorBranch" />
+    <MESSAGE value="add and delete tutor" />
+    <MESSAGE value="files restoration" />
+    <MESSAGE value="edit application.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit application.yml" />
   </component>
 </project>

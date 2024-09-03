@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/location")
+@RequestMapping("api/country")
 public class CountryController {
     private final CountryService service;
 
@@ -17,7 +17,7 @@ public class CountryController {
         this.service = service;
     }
 
-    @GetMapping("country")
+    @GetMapping("")
     public ResponseEntity<Object> getCountries(){
         try {
             return ResponseEntity.ok(this.service.getCountries());
