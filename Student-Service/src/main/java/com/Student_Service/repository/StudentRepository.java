@@ -12,8 +12,9 @@ public interface StudentRepository extends JpaRepository<Student,String> {
     @Query(value = """
             SELECT stu
             FROM Student as stu
+            WHERE (:citizenshipId IS NULL OR stu.citizenshipId = :citizenshipId)
             """)
-    List<Student> getStudentByPage(Pageable pageable);
+    List<Student> getStudent(Pageable pageable,Integer citizenshipId);
 
     @Query(value = """
             SELECT count(stu)
@@ -34,11 +35,4 @@ public interface StudentRepository extends JpaRepository<Student,String> {
             WHERE CONCAT(stu.firstName,' ',stu.middleName,' ',stu.lastName) = :fullName
             """)
     Student getStudentByFullName(String fullName);
-
-    @Query(value = """
-            SELECT stu
-            FROM Student as stu
-            WHERE stu.citizenshipId = :citizenshipId
-            """)
-    List<Student> getStudentByCitizenshipID(Integer citizenshipId);
 }

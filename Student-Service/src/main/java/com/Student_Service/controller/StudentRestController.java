@@ -3,6 +3,7 @@ package com.Student_Service.controller;
 import com.Student_Service.dto.StudentUpsertDto;
 import com.Student_Service.dto.StudentDto;
 import com.Student_Service.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +21,17 @@ public class StudentRestController {
         this.service = service;
     }
 
-    @GetMapping("/getStudentsPage")
-    public ResponseEntity<Object> getStudentsByPage(@RequestParam Integer page){
+    @GetMapping("")
+    public ResponseEntity<Object> getStudents(@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer citizenshipId){
         try{
-            List<StudentDto> students = service.getAllStudentPage(page);
+            List<StudentDto> students = service.getAllStudent(page, citizenshipId);
             return ResponseEntity.status(HttpStatus.OK).body(students);
         }catch (Exception exception){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
         }
     }
 
-    @GetMapping("/getStudentByNumber")
+    @GetMapping("/studentNumber")
     public ResponseEntity<Object> getStudentBystudentNumber(@RequestParam String studentNumber){
         try{
             StudentDto student = service.getStudentByStudentNumber(studentNumber);
@@ -41,7 +42,7 @@ public class StudentRestController {
     }
 
 
-    @GetMapping(value = {"/getStudentByFullName={fullName}"})
+    @GetMapping("{fullName}")
     public ResponseEntity<Object> getStudentByFullName(@PathVariable String fullName){
         try{
             var student = service.getStudentByFullName(fullName);
@@ -51,17 +52,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentByCitizenshipID={citizenshipId}"})
-    public ResponseEntity<Object> getStudentByCitizenshipID(@PathVariable Integer citizenshipId){
-        try{
-            List<StudentDto> students = service.getStudentByCitizenshipID(citizenshipId);
-            return ResponseEntity.status(HttpStatus.OK).body(students);
-        }catch (Exception exception){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception);
-        }
-    }
 
-    @PostMapping("/saveStudent")
+    @PostMapping
     public ResponseEntity<Object> post(@RequestBody StudentUpsertDto dto){
         try{
             service.saveStudent(dto);
@@ -71,8 +63,8 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getCertificateByStudentNumber={studentNumber}"})
-    public ResponseEntity<Object> getCertificateByStudentNumber(@PathVariable String studentNumber){
+    @GetMapping("/certificate")
+    public ResponseEntity<Object> getCertificateByStudentNumber(@RequestParam String studentNumber){
         try {
             var dto = service.getCertificate(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body(dto);
@@ -81,7 +73,7 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/getStudentMajor"})
+    @GetMapping("/major")
     public ResponseEntity<Object> getStudentMajor(@RequestParam String studentNumber){
         try {
             var dto = service.getMajorByStudentNumber(studentNumber);
@@ -91,7 +83,7 @@ public class StudentRestController {
         }
     }
 
-    @PostMapping("/editStudent")
+    @PutMapping
     public ResponseEntity<Object> edit(@RequestBody StudentUpsertDto dto){
         try{
             service.editStudent(dto);
@@ -101,13 +93,13 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping(value = {"/deleteStudent"})
+    @DeleteMapping
     public ResponseEntity<Object> deleteStudent(@RequestParam String studentNumber) {
         try {
             service.deleteStudent(studentNumber);
             return ResponseEntity.status(HttpStatus.OK).body("Student Deleted!");
         } catch (Exception exception) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot be deleted, have connection with other table!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
         }
     }
 }

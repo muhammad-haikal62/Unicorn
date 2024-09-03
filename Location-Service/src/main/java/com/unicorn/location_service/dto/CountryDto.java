@@ -11,5 +11,5 @@ public class CountryDto {
     private Long id;
     private String sortName;
     private String name;
-    private String phoneCode;
+    private Integer phoneCode;
 }

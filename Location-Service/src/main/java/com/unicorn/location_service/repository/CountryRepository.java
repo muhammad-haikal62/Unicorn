@@ -13,7 +13,7 @@ public interface CountryRepository extends JpaRepository<Country, Long> {
     @Query("""
             SELECT new com.unicorn.location_service.dto.CountryDto(
                 cou.id,
-                cou.shortName,
+                cou.sortName,
                 cou.name,
                 cou.phoneCode
             )
