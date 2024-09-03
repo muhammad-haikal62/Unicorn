@@ -39,7 +39,7 @@ public class SubjectController {
         try {
             if (!bindingResult.hasErrors()) {
                 service.save(dto);
-                var bodies = dto.getId() + " berhasil diupdate";
+                var bodies = dto.getId() + " berhasil disave";
                 return ResponseEntity.status(HttpStatus.OK).body(bodies);
             } else {
                 return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(bindingResult.getAllErrors());
@@ -54,7 +54,7 @@ public class SubjectController {
         try {
             service.delete(id);
             return ResponseEntity.status(HttpStatus.OK).
-                    body("Shipment " + id + " berhasil dihapus");
+                    body("subject " + id + " berhasil dihapus");
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("RUNTIME ERROR");
         }
