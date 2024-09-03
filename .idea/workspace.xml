@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="586e4d83-1bb2-4169-931d-ed57d0d5c6b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Student-Service/Student-Service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/gateway-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-registry/service-registry.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2lUnfgQMqsSOrY6kJKxeW1cxSxK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tutor-service" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project Gateway\unicorn-microservices\tutor-service\src\main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Compound.UnicornMicroservices">
+    <configuration name="EnrollmentService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.enrollment_service.EnrollmentServiceApplication" />
+      <module name="enrollment-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.gateway_service.GatewayServiceApplication" />
+      <module name="gateway-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocationService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.location_service.LocationServiceApplication" />
+      <module name="location-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceRegistry" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.service_registry.ServiceRegistryApplication" />
+      <module name="service-registry" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.Student_Service.StudentServiceApplication" />
+      <module name="Student-Service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SubjectService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.subject_service.SubjectServiceApplication" />
+      <module name="subject-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TutorService" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.unicorn.tutor_service.TutorServiceApplication" />
+      <module name="tutor-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnicornMicroservices" type="CompoundRunConfigurationType">
+      <toRun name="LocationService" type="Application" />
+      <toRun name="StudentService" type="Application" />
+      <toRun name="GatewayService" type="Application" />
+      <toRun name="TutorService" type="Application" />
+      <toRun name="EnrollmentService" type="Application" />
+      <toRun name="SubjectService" type="Application" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType">
+      <toRun name="LocationService" type="Application" />
+      <toRun name="StudentService" type="Application" />
+      <toRun name="GatewayService" type="Application" />
+      <toRun name="TutorService" type="Application" />
+      <toRun name="EnrollmentService" type="Application" />
+      <toRun name="SubjectService" type="Application" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.ServiceRegistry" />
+      <item itemvalue="Application.GatewayService" />
+      <item itemvalue="Application.StudentService" />
+      <item itemvalue="Application.TutorService" />
+      <item itemvalue="Application.LocationService" />
+      <item itemvalue="Application.SubjectService" />
+      <item itemvalue="Application.EnrollmentService" />
+      <item itemvalue="Compound.UnicornMicroservices" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="586e4d83-1bb2-4169-931d-ed57d0d5c6b4" name="Changes" comment="" />
+      <created>1725243633151</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725243633151</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

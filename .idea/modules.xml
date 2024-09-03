@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Student-Service/Student-Service.iml" filepath="$PROJECT_DIR$/Student-Service/Student-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enrollment-service/enrollment-service.iml" filepath="$PROJECT_DIR$/enrollment-service/enrollment-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Location-Service/location-service.iml" filepath="$PROJECT_DIR$/Location-Service/location-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/subject-service/subject-service.iml" filepath="$PROJECT_DIR$/subject-service/subject-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tutor-service/tutor-service.iml" filepath="$PROJECT_DIR$/tutor-service/tutor-service.iml" />
+    </modules>
+  </component>
+</project>
